@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText name;
     private EditText password;
-    private TextView infoText;
     private Button btnLogin;
     private Integer counter = 5;
 
@@ -47,29 +46,33 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Log.i("String", "roy1");
                 validateCredentials(name.getText().toString(), password.getText().toString());
+                //Log.i("String", "roy2");
+
             }
         });
-        infoText = (TextView)findViewById(R.id.tvInfo);
-        infoText.setText("Übrige Versuche: 5");
     }
 
     private void validateCredentials (String userName, String userPassword){
 
         //Log.d(myObject.getClass().getName(userName));
-        Log.i("String", (userPassword));
-        Log.i("String", userName);
+        //Log.i("String", (userPassword));
+        //Log.i("String", userName);
+
+        TextView infoText;
 
 
-
-        if ((userName != "swen")){
-
-            Intent intent = new Intent(MainActivity.this, com.example.kom.kickermanager3000.Menu.class);
+        if (userName.equalsIgnoreCase("swen")){
+            //Log.d("String", userName);
+            Intent intent = new Intent(MainActivity.this, com.example.kom.kickermanager3000.Test.class);
             startActivity(intent);
         }
         else{
             counter --;
-            infoText.setText("Übrige Versuche: " + String.valueOf(counter));
+            infoText = (TextView)findViewById(R.id.tvInfo);
+            infoText.setText(getString(R.string.attemptstogo) + String.valueOf(counter));
             if (counter == 0){
                 btnLogin.setEnabled(false);
             }

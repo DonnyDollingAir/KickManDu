@@ -34,16 +34,16 @@ public class Menu extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Log.i("String", MockData.getChallenges()[2].state);
-        this.setChallengesOverView();
+        //Log.i("String", MockData.getChallenges()[2].state);
+        //this.setChallengesOverView();
     }
 
     private void setChallengesOverView (){
 
-        Log.i("piephahn", "roy");
-        Log.i("getChallenges.length", this.tabLayChallenges.toString());
-        Log.i("tableLayout", Integer.toString(MockData.getChallenges().length));
-
+        //Log.i("piephahn", "roy");
+        //Log.i("getChallenges.length", this.tabLayChallenges.toString());
+        //Log.i("tableLayout", Integer.toString(MockData.getChallenges().length));
+/*
         for(int i=0; i<MockData.getChallenges().length; i++){
             Log.i("Mockdata state", MockData.getChallenges()[i].state);
 
@@ -55,6 +55,7 @@ public class Menu extends AppCompatActivity {
             this.tabLayChallenges.addView(challengeRow);
 
         }
+  */
     }
 
 
