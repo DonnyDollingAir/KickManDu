@@ -3,6 +3,8 @@ package com.example.kom.kickermanager3000;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.Constraints;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.TableRow;
 import android.util.Log;
+
+import java.sql.Array;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Mockdata length", Integer.toString(123));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -40,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        name = (EditText)findViewById(R.id.editText2);
-        password = (EditText)findViewById(R.id.editText3);
+        name = (EditText) findViewById(R.id.editText2);
+        password = (EditText) findViewById(R.id.editText3);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +60,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        ConstraintLayout inhaltsflaeche = (ConstraintLayout) findViewById(R.id.blubb);
+        TableLayout table = new TableLayout(this);
+        inhaltsflaeche.addView(table);
+        //Log.d("Mockdata length", Integer.toString(MockData.getChallenges().length));
+        MockData.Challenge[] testData = MockData.getChallenges();
+
+        for (MockData.Challenge challenge : testData) {
+            if (challenge.state != null) {
+                //(int i=0; i<testData.length; i++){
+                //Log.d("Mockdata length", Integer.toString(MockData.getChallenges().length));
+                //if (testData[i] != null) {
+
+                TextView challengeText = new TextView(this);
+                challengeText.setText(challenge.state);
+                TableRow challengeRow = new TableRow(this);
+                challengeRow.addView(challengeText);
+                table.setColumnStretchable(0, true);
+                table.addView(challengeRow);
+            }
+        }
     }
 
     private void validateCredentials (String userName, String userPassword){
