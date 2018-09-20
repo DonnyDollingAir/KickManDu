@@ -1,6 +1,7 @@
 package com.example.kom.kickermanager3000;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -17,8 +18,6 @@ import com.example.kom.kickermanager3000.MockData;
 
 public class Menu extends AppCompatActivity {
 
-    TableLayout tabLayChallenges = (TableLayout)findViewById(R.id.tableLayoutChalle);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,36 +25,36 @@ public class Menu extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         //Log.i("String", MockData.getChallenges()[2].state);
         //this.setChallengesOverView();
     }
 
     private void setChallengesOverView (){
 
-        //Log.i("piephahn", "roy");
-        //Log.i("getChallenges.length", this.tabLayChallenges.toString());
-        //Log.i("tableLayout", Integer.toString(MockData.getChallenges().length));
-/*
-        for(int i=0; i<MockData.getChallenges().length; i++){
-            Log.i("Mockdata state", MockData.getChallenges()[i].state);
+        ConstraintLayout inhaltsflaeche = (ConstraintLayout)findViewById(R.id.blubb);
+        TableLayout table = new TableLayout(this);
+        inhaltsflaeche.addView(table);
+        MockData.Challenge[] testData = MockData.getChallenges();
 
-            TextView challengeText = new TextView(this);
-            challengeText.setText(MockData.getChallenges()[i].mode);
-            TableRow challengeRow = new TableRow(this);
-            challengeRow.addView(challengeText);
-            this.tabLayChallenges.setColumnStretchable(0,true);
-            this.tabLayChallenges.addView(challengeRow);
+        for (MockData.Challenge challenge : testData) {
+            if (challenge.state != null) {
 
+                TextView challengeText = new TextView(this);
+                challengeText.setText(challenge.state);
+                TableRow challengeRow = new TableRow(this);
+                challengeRow.addView(challengeText);
+                table.setColumnStretchable(0, true);
+                table.addView(challengeRow);
+            }
         }
-  */
     }
 
 

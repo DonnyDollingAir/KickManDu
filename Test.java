@@ -25,7 +25,6 @@ public class Test extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        TableLayout tabLayChallenges = (TableLayout)findViewById(R.id.base);
 
     }
 

@@ -1,10 +1,8 @@
 package com.example.kom.kickermanager3000;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.constraint.Constraints;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +16,6 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TableRow;
 import android.util.Log;
-
-import java.sql.Array;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,33 +49,10 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Log.i("String", "roy1");
                 validateCredentials(name.getText().toString(), password.getText().toString());
-                //Log.i("String", "roy2");
 
             }
         });
-        ConstraintLayout inhaltsflaeche = (ConstraintLayout) findViewById(R.id.blubb);
-        TableLayout table = new TableLayout(this);
-        inhaltsflaeche.addView(table);
-        //Log.d("Mockdata length", Integer.toString(MockData.getChallenges().length));
-        MockData.Challenge[] testData = MockData.getChallenges();
-
-        for (MockData.Challenge challenge : testData) {
-            if (challenge.state != null) {
-                //(int i=0; i<testData.length; i++){
-                //Log.d("Mockdata length", Integer.toString(MockData.getChallenges().length));
-                //if (testData[i] != null) {
-
-                TextView challengeText = new TextView(this);
-                challengeText.setText(challenge.state);
-                TableRow challengeRow = new TableRow(this);
-                challengeRow.addView(challengeText);
-                table.setColumnStretchable(0, true);
-                table.addView(challengeRow);
-            }
-        }
     }
 
     private void validateCredentials (String userName, String userPassword){
@@ -93,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (userName.equalsIgnoreCase("swen")){
             //Log.d("String", userName);
-            Intent intent = new Intent(MainActivity.this, com.example.kom.kickermanager3000.Test.class);
+            Intent intent = new Intent(MainActivity.this, com.example.kom.kickermanager3000.Menu.class);
             startActivity(intent);
         }
         else{
