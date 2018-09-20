@@ -1,5 +1,6 @@
 package com.example.kom.kickermanager3000;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -24,7 +25,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setChallengesOverView ();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,9 +40,9 @@ public class Menu extends AppCompatActivity {
 
     private void setChallengesOverView (){
 
-        ConstraintLayout inhaltsflaeche = (ConstraintLayout)findViewById(R.id.blubb);
+        ConstraintLayout challengesArea = (ConstraintLayout)findViewById(R.id.layoutChallenges);
         TableLayout table = new TableLayout(this);
-        inhaltsflaeche.addView(table);
+        challengesArea.addView(table);
         MockData.Challenge[] testData = MockData.getChallenges();
 
         for (MockData.Challenge challenge : testData) {
@@ -49,6 +50,7 @@ public class Menu extends AppCompatActivity {
 
                 TextView challengeText = new TextView(this);
                 challengeText.setText(challenge.state);
+                challengeText.setTextColor(Color.WHITE);
                 TableRow challengeRow = new TableRow(this);
                 challengeRow.addView(challengeText);
                 table.setColumnStretchable(0, true);
